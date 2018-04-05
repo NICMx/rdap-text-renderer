@@ -144,14 +144,14 @@ public class DomainRenderer {
 			if (RendererUtil.isObjectVisible(ds.getKeytag())) {
 				writer.write(tab);
 				writer.write("keyTag : ");
-				writer.write(ds.getKeytag());
+				writer.write(ds.getKeytag().toString());
 				writer.write("\n");
 			}
 
 			if (RendererUtil.isObjectVisible(ds.getAlgorithm())) {
 				writer.write(tab);
 				writer.write("Algorithm : ");
-				writer.write(ds.getAlgorithm());
+				writer.write(ds.getAlgorithm().toString());
 				writer.write("\n");
 			}
 
@@ -165,7 +165,7 @@ public class DomainRenderer {
 			if (RendererUtil.isObjectVisible(ds.getDigestType())) {
 				writer.write(tab);
 				writer.write("Digest Type : ");
-				writer.write(ds.getDigestType());
+				writer.write(ds.getDigestType().toString());
 				writer.write("\n");
 			}
 
@@ -204,14 +204,14 @@ public class DomainRenderer {
 			if (RendererUtil.isObjectVisible(k.getFlags())) {
 				writer.write(tab);
 				writer.write("flags : ");
-				writer.write(k.getFlags());
+				writer.write(k.getFlags().toString());
 				writer.write("\n");
 			}
 
 			if (RendererUtil.isObjectVisible(k.getProtocol())) {
 				writer.write(tab);
 				writer.write("protocol : ");
-				writer.write(k.getProtocol());
+				writer.write(k.getProtocol().toString());
 				writer.write("\n");
 			}
 
@@ -223,8 +223,8 @@ public class DomainRenderer {
 			}
 			if (RendererUtil.isObjectVisible(k.getAlgorithm())) {
 				writer.write(tab);
-				writer.write("protocol : ");
-				writer.write(k.getAlgorithm());
+				writer.write("algorithm : ");
+				writer.write(k.getAlgorithm().toString());
 				writer.write("\n");
 			}
 			if (RendererUtil.isObjectVisible(k.getEvents())) {

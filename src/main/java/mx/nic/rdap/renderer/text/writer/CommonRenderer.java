@@ -77,52 +77,17 @@ public class CommonRenderer {
 			writer.println();
 		}
 
+		if (RendererUtil.isObjectVisible(rdapObj.getLang())) {
+			writer.write(tabSpace);
+			writer.write("lang: ");
+			writer.write(rdapObj.getLang());
+			writer.println();
+		}
 	}
 
 	public static void writeNotice(Remark notice, PrintWriter writer, String tabSpace) {
 		writeRemarkObject(notice, writer, tabSpace, "notice");
 	}
-
-	// private static void writeRemark(Remark remark, PrintWriter writer, String
-	// tabSpace) {
-	// if (RendererUtil.isObjectVisible(remark.getTitle())) {
-	// writer.write(tabSpace);
-	// writer.write("remark title: ");
-	// writer.write(remark.getTitle());
-	// writer.println();
-	// }
-	//
-	// if (RendererUtil.isObjectVisible(remark.getType())) {
-	// writer.write(tabSpace);
-	// writer.write("remark type: ");
-	// writer.write(remark.getType());
-	// writer.println();
-	// }
-	//
-	// if (RendererUtil.isObjectVisible(remark.getLanguage())) {
-	// writer.write(tabSpace);
-	// writer.write("remark lang: ");
-	// writer.write(remark.getLanguage());
-	// writer.println();
-	// }
-	//
-	// if (RendererUtil.isObjectVisible(remark.getDescriptions())) {
-	// writer.write(tabSpace);
-	// writer.write("remark description: ");
-	// for (RemarkDescription description : remark.getDescriptions()) {
-	// writer.write(description.getDescription());
-	// writer.write(" ");
-	// }
-	// writer.println();
-	// }
-	//
-	// if (RendererUtil.isObjectVisible(remark.getLinks())) {
-	// writer.write(tabSpace);
-	// writer.write("remark links");
-	// writer.println();
-	// writeLinks(remark.getLinks(), writer, "\t");
-	// }
-	// }
 
 	public static void writerRemarks(List<Remark> remarks, PrintWriter writer, String tabSpace) {
 		writeRemarksObjects(remarks, writer, tabSpace, "remark");

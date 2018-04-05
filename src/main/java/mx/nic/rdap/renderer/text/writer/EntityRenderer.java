@@ -8,6 +8,8 @@ import mx.nic.rdap.core.db.Autnum;
 import mx.nic.rdap.core.db.Entity;
 import mx.nic.rdap.core.db.IpNetwork;
 import mx.nic.rdap.core.db.PublicId;
+import mx.nic.rdap.core.db.VCard;
+import mx.nic.rdap.core.db.VCardPostalInfo;
 import mx.nic.rdap.renderer.util.RendererUtil;
 
 public class EntityRenderer {
@@ -71,6 +73,12 @@ public class EntityRenderer {
 			writer.println();
 		}
 
+		if (RendererUtil.isObjectVisible(entity.getVCardList())
+				&& RendererUtil.isObjectVisible(entity.getVCardList().get(0))) {
+			writeVCard(entity.getVCardList().get(0), writer, tabSpace);
+			writer.println();
+		}
+
 		CommonRenderer.writeCommonAttributes(entity, writer, tabSpace);
 
 		if (RendererUtil.isObjectVisible(entity.getAutnums())) {
@@ -91,5 +99,47 @@ public class EntityRenderer {
 			}
 		}
 
+	}
+
+	public static void writeVCard(VCard v, PrintWriter writer, String tabSpace) {
+		writer.write(tabSpace);
+		writer.write("VCard: ");
+
+		writeToWriter("fn", v.getName(), tabSpace, writer);
+		writeToWriter("org", v.getCompanyName(), tabSpace, writer);
+		writeToWriter("url", v.getCompanyURL(), tabSpace, writer);
+		writeToWriter("email", v.getEmail(), tabSpace, writer);
+		writeToWriter("voice", v.getVoice(), tabSpace, writer);
+		writeToWriter("cell", v.getCellphone(), tabSpace, writer);
+		writeToWriter("fax", v.getFax(), tabSpace, writer);
+		writeToWriter("title", v.getJobTitle(), tabSpace, writer);
+
+		if (RendererUtil.isObjectVisible(v.getPostalInfo())) {
+			for (VCardPostalInfo postalInfo : v.getPostalInfo()) {
+				writer.write("\n\t");
+				writer.write(tabSpace);
+				writer.write("postal info: ");
+				String postalInfoTabSpace = tabSpace + "\t";
+				writeToWriter("type", postalInfo.getType(), postalInfoTabSpace, writer);
+				writeToWriter("street1", postalInfo.getStreet1(), postalInfoTabSpace, writer);
+				writeToWriter("street2", postalInfo.getStreet2(), postalInfoTabSpace, writer);
+				writeToWriter("street3", postalInfo.getStreet3(), postalInfoTabSpace, writer);
+				writeToWriter("city", postalInfo.getCity(), postalInfoTabSpace, writer);
+				writeToWriter("state", postalInfo.getState(), postalInfoTabSpace, writer);
+				writeToWriter("postal code", postalInfo.getPostalCode(), postalInfoTabSpace, writer);
+				writeToWriter("country", postalInfo.getCountry(), postalInfoTabSpace, writer);
+			}
+		}
+
+	}
+
+	private static void writeToWriter(String key, String value, String tabSpace, PrintWriter writer) {
+		if (RendererUtil.isObjectVisible(value)) {
+			writer.write("\n\t");
+			writer.write(tabSpace);
+			writer.write(key);
+			writer.write(": ");
+			writer.write(value);
+		}
 	}
 }

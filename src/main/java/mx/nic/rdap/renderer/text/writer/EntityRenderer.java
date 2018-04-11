@@ -62,7 +62,8 @@ public class EntityRenderer {
 				} else {
 					writer.write("null");
 				}
-				writer.write(", ");
+				writer.write("\n\t");
+				writer.write(tabSpace);
 				writer.write("identifier: ");
 				if (RendererUtil.isObjectVisible(pid.getPublicId())) {
 					writer.write(pid.getPublicId());

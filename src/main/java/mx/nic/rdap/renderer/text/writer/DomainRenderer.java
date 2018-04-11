@@ -67,7 +67,7 @@ public class DomainRenderer {
 				} else {
 					writer.write("null");
 				}
-				writer.write(", ");
+				writer.write("\n\t");
 				writer.write("identifier: ");
 				if (RendererUtil.isObjectVisible(pid.getPublicId())) {
 					writer.write(pid.getPublicId());
@@ -98,7 +98,7 @@ public class DomainRenderer {
 		if (RendererUtil.isObjectVisible(d.getIpNetwork())) {
 			writer.write("Domain IpNetwork:");
 			writer.println();
-			IpNetworkRenderer.writeIpNetwork(d.getIpNetwork(), writer);
+			IpNetworkRenderer.writeIpNetwork(d.getIpNetwork(), writer, "\t");
 
 		}
 
@@ -177,7 +177,7 @@ public class DomainRenderer {
 					writer.write(tab + "\t");
 					writer.write("event: ");
 					writer.println();
-					CommonRenderer.writeEvent(e, writer, tab + "\t");
+					CommonRenderer.writeEvent(e, writer, tab + "\t\t");
 				}
 			}
 
@@ -190,7 +190,7 @@ public class DomainRenderer {
 					writer.write(tab + "\t");
 					writer.write("link: ");
 					writer.println();
-					CommonRenderer.writeLink(l, writer, tab + "\t");
+					CommonRenderer.writeLink(l, writer, tab + "\t\t");
 				}
 			}
 
@@ -235,7 +235,7 @@ public class DomainRenderer {
 					writer.write(tab + "\t");
 					writer.write("event: ");
 					writer.println();
-					CommonRenderer.writeEvent(e, writer, tab + "\t");
+					CommonRenderer.writeEvent(e, writer, tab + "\t\t");
 				}
 			}
 
@@ -248,7 +248,7 @@ public class DomainRenderer {
 					writer.write(tab + "\t");
 					writer.write("link: ");
 					writer.println();
-					CommonRenderer.writeLink(l, writer, tab + "\t");
+					CommonRenderer.writeLink(l, writer, tab + "\t\t");
 				}
 			}
 

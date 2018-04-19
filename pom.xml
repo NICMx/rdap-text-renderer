@@ -4,7 +4,7 @@
 
 	<groupId>mx.nic.rdap</groupId>
 	<artifactId>rdap-text-renderer</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>rdap-text-renderer</name>
